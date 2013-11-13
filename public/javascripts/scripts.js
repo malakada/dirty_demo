@@ -3,8 +3,8 @@ navigator.getUserMedia || (navigator.getUserMedia = navigator.mozGetUserMedia ||
 
 if (navigator.getUserMedia) {
   navigator.getUserMedia({
-    video: true,
-    audio: true
+    video: true//,
+    // audio: true
   }, onSuccess, onError);
 } else {
   alert('getUserMedia is not supported in this browser.');
@@ -24,13 +24,13 @@ function onSuccess(stream) {
   video.autoplay = true;
   video.src = videoSource
 
-  window.audioContext || (window.audioContext = window.webkitAudioContext);
+  // window.audioContext || (window.audioContext = window.webkitAudioContext);
 
-  if (window.audioContext) {
-    audioContext = new window.audioContext();
-    mediaStreamSource = audioContext.createMediaStreamSource(stream);
-    mediaStreamSource.connect(audioContext.destination);
-  }
+  // if (window.audioContext) {
+  //   audioContext = new window.audioContext();
+  //   mediaStreamSource = audioContext.createMediaStreamSource(stream);
+  //   mediaStreamSource.connect(audioContext.destination);
+  // }
 }
 
 function onError() {
