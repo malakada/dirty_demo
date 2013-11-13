@@ -52,6 +52,22 @@ if (annyang) {
   var commands = {
     'say cheese': function () {
       takePhoto();
+    },
+    'mojo lingo': function () {
+      var panel = document.getElementById('content-panel');
+      panel.innerHTML = "Mojo Lingo is awesome!";
+    },
+    'atlanta ruby group': function () {
+      var panel = document.getElementById('content-panel');
+      panel.innerHTML = "Atlanta is the best!";
+    },
+    'ruby group': function () {
+      var panel = document.getElementById('content-panel');
+      panel.innerHTML = "Atlanta is the best!";
+    },
+    'mel': function () {
+      var panel = document.getElementById('content-panel');
+      panel.innerHTML = "Mel is truly the fairest in the land!";
     }
   }
   annyang.init(commands);

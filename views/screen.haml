@@ -2,7 +2,7 @@
 %html
   %head
     %title
-      Dirty Demo
+      Mojo Lingo Talking Interwebz Demo
     = stylesheet_link_tag "style"
     = bootstrap_assets
     = javascript_include_tag "annyang", "scripts"
@@ -10,14 +10,15 @@
     - container :fluid do
       - row do
         - span12 do
-          %h2 Mojo Lingo Dirty WebRTC Demo
+          %h2 Mojo Lingo Talking Interwebz Demo
     - container :fluid do
       - row do
         - span4 do
-          %p side content area
+          %img{ src: '/images/magic-adam-rubyatl.png' }
+          #content-panel
         - span8 do
           ~ yield
     - container :fluid do
       - row do
         - span12 do
-          %p Footer stuff
+          %p &copy; 2013 Mojo Lingo LLC.  No smoke and mirrors here!
