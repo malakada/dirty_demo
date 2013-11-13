@@ -12,6 +12,7 @@ if (navigator.getUserMedia) {
 
 function onSuccess(stream) {
   var video = document.getElementById('webcam');
+  var photo = document.getElementById('photo');
   var videoSource, audioContext, mediaStreamSource;
 
   if(window.webkitURL) {
@@ -34,4 +35,15 @@ function onSuccess(stream) {
 
 function onError() {
   alert('There has been a problem retrieving the streams--did you allow access?');
+}
+
+function takePhoto() {
+  var video = document.getElementById('webcam');
+  var photo = document.getElementById('photo');
+  var context = photo.getContext('2d');
+
+  photo.width = video.clientWidth;
+  photo.height = video.clientHeight;
+
+  context.drawImage(video, 0, 0, photo.width, photo.height);
 }
