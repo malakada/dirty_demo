@@ -2,7 +2,28 @@
 navigator.getUserMedia || (navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 
 if (navigator.getUserMedia) {
-  alert('It will work!');
+  navigator.getUserMedia({
+    video: true,
+    audio: true
+  }, onSuccess, onError);
 } else {
   alert('getUserMedia is not supported in this browser.');
+}
+
+function onSuccess(stream) {
+  var video = document.getElementById('webcam');
+  var videoSource;
+
+  if(window.webkitURL) {
+    videoSource = window.webkitURL.createObjectURL(stream);
+  } else {
+    videoSource = stream;
+  }
+
+  video.autoplay = true;
+  video.src = videoSource
+}
+
+function onError() {
+  alert('There has been a problem retrieving the streams--did you allow access?');
 }
