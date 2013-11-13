@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %title
+      Dirty Demo
+    = stylesheet_link_tag "style"
+    = bootstrap_assets
+  %body
+    - container :fluid do
+      - row do
+        - span12 do
+          %h2 Mojo Lingo Dirty WebRTC Demo
+    - container :fluid do
+      - row do
+        - span4 do
+          %p side content area
+        - span8 do
+          ~ yield
+    - container :fluid do
+      - row do
+        - span12 do
+          %p Footer stuff
