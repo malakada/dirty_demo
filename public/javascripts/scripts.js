@@ -72,6 +72,13 @@ function mel() {
   panel.innerHTML = blurb;
 }
 
+function hello() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p>";
+
+  panel.innerHTML = blurb;
+}
+
 if (annyang) {
   var commands = {
     'say cheese': function () {
@@ -88,6 +95,9 @@ if (annyang) {
     },
     'mel': function () {
       mel();
+    },
+    'hello': function () {
+      hello();
     }
   }
   annyang.init(commands);
