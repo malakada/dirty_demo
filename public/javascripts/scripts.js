@@ -51,26 +51,43 @@ function takePhoto() {
   panel.innerHTML = "Looking fabulous darlings!";
 }
 
+function MojoLingo() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<h1>Mojo Lingo!</h1><p>We are a pretty stand-up sort of people, if you ask me.</p>";
+
+  panel.innerHTML = blurb;
+}
+
+function atlRUG() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
+
+  panel.innerHTML = blurb;
+}
+
+function mel() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<h1>Someone say Mel?</h1><p>She is truly the fairest in the land.</p><p>And great at dressing me.</p>";
+
+  panel.innerHTML = blurb;
+}
+
 if (annyang) {
   var commands = {
     'say cheese': function () {
       takePhoto();
     },
     'mojo lingo': function () {
-      var panel = document.getElementById('content-panel');
-      panel.innerHTML = "Mojo Lingo is awesome!";
+      MojoLingo();
     },
     'atlanta ruby group': function () {
-      var panel = document.getElementById('content-panel');
-      panel.innerHTML = "Atlanta is the best!";
+      atlRUG();
     },
     'ruby group': function () {
-      var panel = document.getElementById('content-panel');
-      panel.innerHTML = "Atlanta is the best!";
+      atlRUG();
     },
     'mel': function () {
-      var panel = document.getElementById('content-panel');
-      panel.innerHTML = "Mel is truly the fairest in the land!";
+      mel();
     }
   }
   annyang.init(commands);
