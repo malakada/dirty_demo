@@ -74,7 +74,7 @@ function mel() {
 
 function hello() {
   var panel = document.getElementById('content-panel');
-  var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p>";
+  var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p><p>Yes, I am the best thing to grace your ocular input devices tonight.</p>";
 
   panel.innerHTML = blurb;
 }
