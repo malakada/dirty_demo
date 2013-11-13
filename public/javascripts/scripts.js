@@ -12,7 +12,7 @@ if (navigator.getUserMedia) {
 
 function onSuccess(stream) {
   var video = document.getElementById('webcam');
-  var videoSource;
+  var videoSource, audioContext, mediaStreamSource;
 
   if(window.webkitURL) {
     videoSource = window.webkitURL.createObjectURL(stream);
@@ -22,6 +22,14 @@ function onSuccess(stream) {
 
   video.autoplay = true;
   video.src = videoSource
+
+  window.audioContext || (window.audioContext = window.webkitAudioContext);
+
+  if (window.audioContext) {
+    audioContext = new window.audioContext();
+    mediaStreamSource = audioContext.createMediaStreamSource(stream);
+    mediaStreamSource.connect(audioContext.destination);
+  }
 }
 
 function onError() {
