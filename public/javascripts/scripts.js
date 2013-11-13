@@ -47,3 +47,22 @@ function takePhoto() {
 
   context.drawImage(video, 0, 0, photo.width, photo.height);
 }
+
+if (annyang) {
+  var commands = {
+    'say cheese': function () {
+      takePhoto();
+    }
+  }
+  annyang.init(commands);
+  annyang.start();
+
+  annyang.addCallback('start',          function(){console.log('start');})
+  annyang.addCallback('error',          function(){console.log('error');})
+  annyang.addCallback('end',            function(){console.log('end');})
+  annyang.addCallback('result',         function(){console.log('result');})
+  annyang.addCallback('resultMatch',    function(){console.log('resultMatch');})
+  annyang.addCallback('resultNoMatch',  function(){console.log('resultNoMatch');})
+} else {
+  alert("no annyang");
+}
