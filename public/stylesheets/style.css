@@ -1,0 +1,25 @@
+#content-panel {
+  font-size: 3em;
+  line-height: 1em;
+  padding: 50px;
+  border-top: 3px solid #961A2F;
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 3em;
+  line-height: 1.5em;
+}
+
+body {
+  background-image: url('/images/squairy-blue-sky.png');
+  background-repeat: repeat;
+}
+
+#wrapper {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}

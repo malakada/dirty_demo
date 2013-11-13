@@ -10,15 +10,16 @@
     - container :fluid do
       - row do
         - span12 do
-          %h2 Mojo Lingo Talking Interwebz Demo
-    - container :fluid do
-      - row do
-        - span6 do
-          %img{ src: '/images/magic-adam-rubyatl.png' }
-          #content-panel
-        - span6 do
-          ~ yield
-    - container :fluid do
-      - row do
-        - span12 do
-          %p &copy; 2013 Mojo Lingo LLC.  No smoke and mirrors here!
+          - row do
+            - span12 do
+              %h2 Mojo Lingo Talking Interwebz Demo
+          - row do
+            - span6 do
+              #wrapper
+                %img{ src: '/images/magic-adam-rubyatl.png', onclick: 'takePhoto();' }
+                #content-panel
+            - span6 do
+              ~ yield
+          - row do
+            - span12 do
+              %p &copy; 2013 Mojo Lingo LLC.  No smoke and mirrors here!

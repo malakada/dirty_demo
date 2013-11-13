@@ -46,6 +46,9 @@ function takePhoto() {
   photo.height = video.clientHeight;
 
   context.drawImage(video, 0, 0, photo.width, photo.height);
+
+  var panel = document.getElementById('content-panel');
+  panel.innerHTML = "Looking fabulous darlings!";
 }
 
 if (annyang) {
