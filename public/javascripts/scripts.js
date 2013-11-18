@@ -1,19 +1,24 @@
 // Shim for all browsers.
 navigator.getUserMedia || (navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 
+var text_panel;
+
+$(window).load(function() {
+  text_panel = document.getElementById('content-panel');
+});
+
 if (navigator.getUserMedia) {
   navigator.getUserMedia({
-    video: true//,
-    // audio: true
+    video: true
   }, onSuccess, onError);
 } else {
   alert('getUserMedia is not supported in this browser.');
 }
 
 function onSuccess(stream) {
+  var videoSource, mediaStreamSource;
   var video = document.getElementById('webcam');
   var photo = document.getElementById('photo');
-  var videoSource, audioContext, mediaStreamSource;
 
   if(window.webkitURL) {
     videoSource = window.webkitURL.createObjectURL(stream);
@@ -23,14 +28,6 @@ function onSuccess(stream) {
 
   video.autoplay = true;
   video.src = videoSource
-
-  // window.audioContext || (window.audioContext = window.webkitAudioContext);
-
-  // if (window.audioContext) {
-  //   audioContext = new window.audioContext();
-  //   mediaStreamSource = audioContext.createMediaStreamSource(stream);
-  //   mediaStreamSource.connect(audioContext.destination);
-  // }
 }
 
 function onError() {
@@ -51,31 +48,8 @@ function takePhoto() {
   panel.innerHTML = "Looking fabulous darlings!";
 }
 
-function MojoLingo() {
-  var panel = document.getElementById('content-panel');
-  var blurb = "<h1>Mojo Lingo!</h1><p>We are a pretty stand-up sort of people, if you ask me.</p>";
-
-  panel.innerHTML = blurb;
-}
-
-function atlRUG() {
-  var panel = document.getElementById('content-panel');
-  var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
-
-  panel.innerHTML = blurb;
-}
-
-function mel() {
-  var panel = document.getElementById('content-panel');
-  var blurb = "<h1>Someone say Mel?</h1><p>She is truly the fairest in the land.</p><p>And great at dressing me.</p>";
-
-  panel.innerHTML = blurb;
-}
-
-function hello() {
-  var panel = document.getElementById('content-panel');
-  var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p><p>Yes, I am the best thing to grace your ocular input devices tonight.</p>";
-
+// Puts the blurb into the innerHTML of the panel.
+function drawTextPanel(panel, blurb) {
   panel.innerHTML = blurb;
 }
 
@@ -85,19 +59,24 @@ if (annyang) {
       takePhoto();
     },
     'mojo lingo': function () {
-      MojoLingo();
+      var blurb = "<h1>Mojo Lingo!</h1><p>We are a pretty stand-up sort of people, if you ask me.</p>";
+      drawTextPanel(text_panel, blurb);
     },
     'atlanta ruby group': function () {
-      atlRUG();
+      var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
+      drawTextPanel(text_panel, blurb);
     },
     'ruby group': function () {
-      atlRUG();
+      var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
+      drawTextPanel(text_panel, blurb);
     },
     'mel': function () {
-      mel();
+      var blurb = "<h1>Someone say Mel?</h1><p>She is truly the fairest in the land.</p><p>And great at dressing me.</p>";
+      drawTextPanel(text_panel, blurb);
     },
     'hello': function () {
-      hello();
+      var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p><p>Yes, I am the best thing to grace your ocular input devices tonight.</p>";
+      drawTextPanel(text_panel, blurb);
     }
   }
   annyang.init(commands);
