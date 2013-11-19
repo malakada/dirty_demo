@@ -1,7 +1,7 @@
 // Shim for all browsers.
 navigator.getUserMedia || (navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 
-var text_panel;
+var text_panel, annoyed_interval;
 
 $(window).load(function() {
   text_panel = document.getElementById('content-panel');
@@ -53,6 +53,43 @@ function drawTextPanel(panel, blurb) {
   panel.innerHTML = blurb;
 }
 
+// When annyang is matching a command, let the user know.
+function onResult() {
+  thinkingAdam();
+}
+
+// What annyang could not match the command, let the user know.
+function onResultNoMatch(result) {
+  annoyedAdam();
+  drawTextPanel(text_panel, '<p>What you said made no kind of sense at all. It sounded like "' + result + '", but I don\'t care to do anything with that.</p>');
+}
+
+function onResultMatch() {
+  talkingAdam();
+}
+
+function thinkingAdam() {
+  $('#magic-adam').hide();
+  $('#magic-adam-thinking').show();
+  $('#magic-adam-annoyed').hide();
+}
+
+function talkingAdam() {
+  clearInterval(annoyed_interval);
+  $('#magic-adam').show();
+  $('#magic-adam-thinking').hide();
+  $('#magic-adam-annoyed').hide();
+}
+
+function annoyedAdam() {
+  $('#magic-adam').hide();
+  $('#magic-adam-thinking').hide();
+  $('#magic-adam-annoyed').show();
+  annoyed_interval = setInterval(function () {
+    talkingAdam();
+  }, 3000);
+}
+
 if (annyang) {
   var commands = {
     'say cheese': function () {
@@ -62,7 +99,7 @@ if (annyang) {
       var blurb = "<h1>Mojo Lingo!</h1><p>We are a pretty stand-up sort of people, if you ask me.</p>";
       drawTextPanel(text_panel, blurb);
     },
-    'atlanta ruby group': function () {
+    'atlanta (ruby) group': function () {
       var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
       drawTextPanel(text_panel, blurb);
     },
@@ -77,17 +114,19 @@ if (annyang) {
     'hello': function () {
       var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p><p>Yes, I am the best thing to grace your ocular input devices tonight.</p>";
       drawTextPanel(text_panel, blurb);
+    },
+    ':nomatch': function (message) {
+      onResultNoMatch(message);
     }
   }
   annyang.init(commands);
   annyang.start();
 
-  annyang.addCallback('start',          function(){console.log('start');})
-  annyang.addCallback('error',          function(){console.log('error');})
-  annyang.addCallback('end',            function(){console.log('end');})
-  annyang.addCallback('result',         function(){console.log('result');})
-  annyang.addCallback('resultMatch',    function(){console.log('resultMatch');})
-  annyang.addCallback('resultNoMatch',  function(){console.log('resultNoMatch');})
+  annyang.addCallback('start',          function(){console.log('start');});
+  annyang.addCallback('error',          function(){console.log('error');});
+  annyang.addCallback('end',            function(){console.log('end');});
+  annyang.addCallback('result',         function(){ onResult();});
+  annyang.addCallback('resultMatch',    function(){ onResultMatch(); });
 } else {
   alert("no annyang");
 }

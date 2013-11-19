@@ -19,7 +19,9 @@
               #wrapper
                 - row do
                   - span6 :class => 'adam-rabbit' do
-                    %img{ src: '/images/magic-adam-quote.png', onclick: 'takePhoto();' }
+                    %img#magic-adam{ src: '/images/magic-adam-quote.png', onclick: 'takePhoto();' }
+                    %img#magic-adam-thinking{ src: '/images/magic-adam-thinking.png', onclick: 'takePhoto();', style: "display:none;" }
+                    %img#magic-adam-annoyed{ src: '/images/magic-adam-annoyed.png', onclick: 'takePhoto();', style: "display:none;" }
                   - span6 :class => 'speech-bubble' do
                     %img{ src: '/images/atlrug_logo.png' }
                 #content-panel
