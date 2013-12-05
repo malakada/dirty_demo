@@ -68,6 +68,18 @@ function onResultMatch() {
   talkingAdam();
 }
 
+function ratchet() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<img src='/images/ratchetconf-logo.png'>"
+
+  panel.innerHTML = blurb;
+}
+
+function mel() {
+  var panel = document.getElementById('content-panel');
+  var blurb = "<h1>Someone say Mel?</h1><p>She is truly the fairest in the land.</p><p>And great at dressing me.</p>";
+}
+
 function thinkingAdam() {
   $('#magic-adam').hide();
   $('#magic-adam-thinking').show();
@@ -106,6 +118,9 @@ if (annyang) {
     'ruby group': function () {
       var blurb = "<h1>Hi, ATL RUG!</h1><p>Gosh you're looking good tonight.</p>";
       drawTextPanel(text_panel, blurb);
+    },
+    'ratchet': function () {
+      ratchet();
     },
     'mel': function () {
       var blurb = "<h1>Someone say Mel?</h1><p>She is truly the fairest in the land.</p><p>And great at dressing me.</p>";
