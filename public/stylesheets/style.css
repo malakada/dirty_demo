@@ -24,3 +24,7 @@ body {
   border-bottom: 1px solid #eee;
   border-right: 1px solid #eee;
 }
+
+.speech-bubble {
+  text-align: center;
+}

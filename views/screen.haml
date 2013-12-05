@@ -1,8 +1,7 @@
 !!! 5
 %html
   %head
-    %title
-      Mojo Lingo Talking Interwebz Demo
+    %title Mojo Lingo Talking Interwebz Demo
     = stylesheet_link_tag "style"
     = bootstrap_assets
     %script{ src: "//code.jquery.com/jquery-1.10.2.min.js" }
@@ -18,12 +17,12 @@
             - span6 do
               #wrapper
                 - row do
-                  - span6 :class => 'adam-rabbit' do
+                  .span6
                     %img#magic-adam{ src: '/images/magic-adam-quote.png', onclick: 'takePhoto();' }
                     %img#magic-adam-thinking{ src: '/images/magic-adam-thinking.png', onclick: 'takePhoto();', style: "display:none;" }
                     %img#magic-adam-annoyed{ src: '/images/magic-adam-annoyed.png', onclick: 'takePhoto();', style: "display:none;" }
-                  - span6 :class => 'speech-bubble' do
-                    %img{ src: '/images/atlrug_logo.png' }
+                  .span6.speech-bubble
+                    %img{ src: '/images/adhearsionconf_a.png' }
                 #content-panel
             - span6 do
               ~ yield

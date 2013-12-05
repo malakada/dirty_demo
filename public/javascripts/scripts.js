@@ -130,6 +130,10 @@ if (annyang) {
       var blurb = "<h1>HALLOOOO!</h1><p>I'm Adam S. Rabbit.</p><p>No, I will not be pulling a rabbit out of my top hat.</p><p>Yes, I am the best thing to grace your ocular input devices tonight.</p>";
       drawTextPanel(text_panel, blurb);
     },
+    'adhearsion': function () {
+      var blurb = "<h1>AhnConf 2013!</h1><p>Doing the good work. I like it.</p>";
+      drawTextPanel(text_panel, blurb);
+    }
     ':nomatch': function (message) {
       onResultNoMatch(message);
     }
